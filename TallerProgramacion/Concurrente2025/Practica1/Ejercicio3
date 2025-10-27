@@ -1,0 +1,108 @@
+programa ejercicio3
+
+procesos
+  proceso mirarParaArriba
+  comenzar
+    repetir 3
+      derecha
+  fin
+  
+  proceso conteo (ES cantFlores : numero ; ES cantPapeles : numero )
+  comenzar
+    si (HayFlorEnLaEsquina)
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+        cantFlores:= cantFlores + 1
+        
+    si (HayPapelEnLaEsquina)
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        cantPapeles := cantPapeles + 1
+    
+    
+    si (HayPapelEnLaBolsa)
+      mientras(HayPapelEnLaBolsa)
+        depositarPapel
+
+    si (HayFlorEnLaBolsa)
+      mientras(HayFlorEnLaBolsa)
+        depositarFlor    
+       
+  fin
+  
+  proceso recorrerEscalon(E tamaño : numero; ES cantFlores : numero ; ES cantPapeles : numero)
+
+  comenzar    
+    repetir tamaño
+      conteo(cantFlores, cantPapeles)
+      mover
+      
+    derecha
+    
+    repetir tamaño
+      conteo(cantFlores, cantPapeles) 
+      mover  
+
+           
+    mirarParaArriba
+  fin
+  
+  proceso escalones
+  variables 
+    tamaño: numero
+    cantEscalones : numero
+    cantFlores : numero
+    cantPapeles : numero
+  comenzar
+    cantEscalones:= 0
+    tamaño := 0
+    repetir 4
+      cantFlores:= 0
+      cantPapeles:= 0
+      tamaño := tamaño + 1
+      recorrerEscalon(tamaño,cantFlores, cantPapeles )
+      si (cantPapeles - cantFlores = 1)
+        cantEscalones := cantEscalones + 1
+        
+    Informar(cantEscalones)  
+  fin
+    
+areas
+  ciudad : AreaC(1,1,100,100)
+
+robots
+  robot robot1
+  comenzar
+    escalones
+  fin
+  
+
+variables
+  r1 : robot1
+  r2 : robot1
+  r3 : robot1 
+comenzar
+  AsignarArea(r1, ciudad)
+  AsignarArea(r2, ciudad)
+  AsignarArea(r3, ciudad)    
+  
+  Iniciar(r1,12,14) 
+  Iniciar(r2,17,10)
+  Iniciar(r3,22,6)
+fin
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
