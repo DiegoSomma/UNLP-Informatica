@@ -1,0 +1,123 @@
+{5) Realice un programa en el que cuatro robots realizan las siguientes actividades:}
+{● El robot 1 debe limpiar de flores las primeras 15 esquinas de las calles 75y80}
+{Al finalizar}
+{cada calle, debe depositar todas las flores en la última esquina.}
+{● El robot 2 debe limpiar de papeles las últimas 20 esquinas de las avenidas 75 y} {80. Al}
+{finalizar cada avenida debe depositar todos los papeles en la primera esquina.}
+{● El robot 3 debe limpiar de flores las últimas 30 esquinas de las calles 10 y 15.} {Al finalizar}
+{cada calle, debe depositar todas las flores en la última esquina.}
+{● El robot 4 debe limpiar de papeles las primeras 10 esquinas de las avenidas 10 y 15. Al}
+{finalizar cada avenida debe depositar todos los papeles en la primera esquina.}
+
+
+
+
+
+programa ejercicio5
+
+procesos 
+  proceso juntarFlores
+  comenzar
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+  fin
+  
+  proceso depositarPapeles
+  comenzar
+    si (HayPapelEnLaBolsa)
+      depositarPapel      
+  fin
+
+  proceso depositarFlores
+  comenzar
+    si (HayFlorEnLaBolsa)
+      depositarFlor     
+  fin  
+  
+  
+  proceso juntarPapeles
+  comenzar
+    mientras (HayPapelEnLaEsquina)
+      tomarPapel
+  fin
+
+  proceso recorrerLineaPapeles (E veces : numero)
+  comenzar
+    repetir veces
+      juntarPapeles
+      mover
+    juntarPapeles
+    Pos(PosAv, PosCa - veces)
+    si (HayPapelEnLaBolsa)
+      depositarPapeles   
+  fin
+  
+  proceso recorrerLineaFlores (E veces: numero)
+  comenzar
+    repetir veces
+      juntarFlores
+      mover
+    juntarFlores
+    si (HayFlorEnLaBolsa)
+      depositarFlores    
+  fin
+  
+  
+  
+areas 
+  ciudad : AreaC (1,1,100,100)
+
+robots
+  robot robot1
+  comenzar
+    derecha
+    recorrerLineaFlores(15)
+    Pos(1,PosCa + 5)
+    recorrerLineaFlores(15)     
+  fin
+  
+  robot robot2
+  comenzar
+    recorrerLineaPapeles(20)
+    Pos(PosAv + 5, 80)
+    recorrerLineaPapeles(20)  
+  fin
+  
+  robot robot3
+  comenzar
+    derecha
+    recorrerLineaFlores(30)
+    Pos(70,PosCa + 5)
+    recorrerLineaFlores(30) 
+  fin
+  
+  robot robot4
+  comenzar
+    recorrerLineaPapeles(10)
+    Pos(PosAv + 5, 1)
+    recorrerLineaPapeles(10)  
+  fin  
+  
+
+variables
+  r1 : robot1
+  r2 : robot2
+  r3 : robot3
+  r4 : robot4
+  
+comenzar
+  AsignarArea(r1, ciudad)
+  AsignarArea(r2, ciudad)
+  AsignarArea(r3, ciudad)
+  AsignarArea(r4, ciudad)
+  
+  Iniciar(r1,1,75)
+  Iniciar(r2,75,80)
+  Iniciar(r3, 70, 10)
+  Iniciar(r4, 10,1)
+
+fin  
+  
+  
+  
+    

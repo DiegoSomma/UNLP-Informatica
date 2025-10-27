@@ -1,0 +1,80 @@
+programa ejercicio2
+
+procesos
+  proceso juntarPapel (ES cantPapeles: numero)
+  comenzar
+    si (HayPapelEnLaEsquina)
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        cantPapeles := cantPapeles + 1
+  fin
+  
+  proceso girarDerecha(E cantVeces: numero)
+  comenzar
+    repetir cantVeces
+      derecha
+  fin
+  
+  proceso recorrerLado
+  variables
+    cantPapeles: numero
+  comenzar
+    cantPapeles := 0
+    repetir 20
+      juntarPapel(cantPapeles)
+      mover
+    juntarPapel(cantPapeles)
+    Informar(cantPapeles)
+  fin  
+  
+areas
+  cuadrado : AreaC(10,10,30,30)
+
+robots
+  robot robot1
+  comenzar
+    recorrerLado
+  fin
+
+  robot robot2
+  comenzar
+    girarDerecha(1)  
+    recorrerLado
+  fin
+  
+  robot robot3
+  comenzar
+    girarDerecha(2)  
+    recorrerLado
+  fin
+  
+  robot robot4
+  comenzar
+    girarDerecha(3)  
+    recorrerLado
+  fin
+
+variables
+  r1 : robot1
+  r2 : robot2
+  r3 : robot3
+  r4 : robot4      
+
+comenzar
+  AsignarArea (r1, cuadrado)
+  AsignarArea (r2, cuadrado)
+  AsignarArea (r3, cuadrado)
+  AsignarArea (r4, cuadrado)     
+  
+  Iniciar(r1,10,10)
+  Iniciar(r2,10,30)
+  Iniciar(r3,30,30)
+  Iniciar(r4,30,10)
+   
+fin
+
+
+
+
+
+  

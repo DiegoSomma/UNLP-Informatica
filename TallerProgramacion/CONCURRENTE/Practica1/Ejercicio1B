@@ -1,0 +1,62 @@
+programa ejercicio1B
+
+procesos
+  proceso contarFLoresYEsq(ES cantFlores: numero; ES esqVacias: numero)
+  comenzar
+    si(HayFlorEnLaEsquina)
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+        cantFlores := cantFlores + 1        
+    sino
+      esqVacias := esqVacias + 1 
+  fin
+        
+  proceso RecorrerAv(ES cantFlores: numero; ES esqVacias: numero)
+  variables 
+    pos : numero
+  comenzar
+    cantFlores := 0
+    esqVacias := 0
+    pos := 0
+    mientras (pos < 99)
+      contarFLoresYEsq(cantFlores,esqVacias)
+      pos := pos + 1
+      mover
+    contarFLoresYEsq(cantFlores,esqVacias) 
+    
+    mientras(HayFlorEnLaBolsa)
+      depositarFlor  
+      
+  fin
+    
+areas 
+  ciudad : AreaC (1, 1, 100,100)
+robots
+  robot robot1
+  variables
+    f : numero
+    esqVacias : numero
+  comenzar
+    RecorrerAv(f,esqVacias)
+    Informar(f)
+    Informar(esqVacias)
+  fin
+ 
+variables 
+  r1: robot1
+  r2: robot1
+  r3: robot1
+
+comenzar  
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(r3,ciudad)
+      
+  Iniciar(r1,1,1)
+  Iniciar(r2,3,1)
+  Iniciar(r3,5,1)    
+  
+fin
+ 
+    
+  
