@@ -1,0 +1,98 @@
+programa ejercicio4
+
+procesos
+  proceso juntarFlores 
+  comenzar
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+  fin
+  
+  proceso juntarPapeles
+  comenzar
+    mientras (HayPapelEnLaEsquina)
+      tomarPapel
+  fin  
+     
+  proceso recorrerAreaPar
+  variables
+    avenida : numero
+  comenzar
+    repetir 2
+      avenida := PosAv
+      repetir 99
+        juntarFlores
+        mover
+      juntarFlores
+      avenida := avenida + 1  
+      Pos(avenida , 1)
+    repetir 99
+      juntarPapeles
+      mover
+    juntarPapeles        
+  fin
+  
+  proceso recorrerAreaImpar
+  variables
+    avenida : numero
+  comenzar
+    repetir 2
+      avenida := PosAv
+      repetir 99
+        juntarPapeles
+        mover
+      juntarPapeles
+      avenida := avenida + 1  
+      Pos(avenida , 1)
+    repetir 99
+      juntarPapeles
+      mover
+    juntarPapeles
+             
+  fin
+  
+areas
+  area1 : AreaP (23,1,25,100)
+  area2 : AreaP (48,1,50,100)  
+  area3 : AreaP (73,1,75,100)        
+  area4 : AreaP (98,1,100,100)    
+  
+robots
+  robot robotImpar
+  comenzar
+    recorrerAreaImpar
+  fin
+
+  robot robotPar
+  comenzar
+    recorrerAreaPar
+  fin  
+  
+variables
+  r1: robotImpar
+  r2: robotPar
+  r3: robotImpar
+  r4: robotPar      
+
+comenzar
+  AsignarArea(r1, area1)
+  AsignarArea(r2, area2)
+  AsignarArea(r3, area3)
+  AsignarArea(r4, area4)
+  
+  Iniciar(r1,23,1)
+  Iniciar(r2,48,1)
+  Iniciar(r3,73,1)
+  Iniciar(r4,98,1)      
+   
+  
+        
+fin      
+  
+  
+  
+  
+  
+  
+   
+  
+      
